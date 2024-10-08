@@ -1,7 +1,6 @@
 package com.example.curso_api.model;
 
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +11,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity @Getter @Setter @ToString @NoArgsConstructor
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nome;
     private String especialidade;
 
     @OneToMany(mappedBy = "professor")
-    private List<Curso> cursos;
+    @JsonManagedReference
+    private List<Curso> cursos; // Lista de cursos relacionados ao professor
 }

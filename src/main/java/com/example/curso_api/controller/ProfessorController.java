@@ -36,11 +36,11 @@ public class ProfessorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public Professor criarProfessor(@RequestBody Professor professor) {
         return professorService.salvarProfessor(professor);
     }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<Professor> atualizarProfessor(@PathVariable Long id, @RequestBody Professor professorDetalhes) {
         return professorService.buscarProfessorPorId(id).map(professor -> {
