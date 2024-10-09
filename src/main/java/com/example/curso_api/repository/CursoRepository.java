@@ -10,4 +10,5 @@ import com.example.curso_api.model.Curso;
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
     List<Curso> findByNomeContaining(String nome);
+    List<Curso> findByProfessorId(Long professorId);
 }
