@@ -29,5 +29,5 @@ public class Professor {
 
     @OneToMany(mappedBy = "professor")
     @JsonManagedReference
-    private List<Curso> cursos; // Lista de cursos relacionados ao professor
+    private List<Curso> cursos;
 }
